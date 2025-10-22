@@ -6,16 +6,14 @@ from config import ICON_FILE
 
 def clean_word_for_compare(word: str) -> str:
     """
-    Return cleaned lowercased word for comparison.
-    Returns empty string if word is bracketed like [abc].
+    Lowercase and remove punctuation for word comparison.
+    Ignore text in [brackets].
     """
-    word = word.strip()
-    if re.match(r"^\[.*\]$", word):
-        return ""
-    # remove .,?,! and other punctuation
-    word = re.sub(r"[.?!]", "", word)
+    # Remove text in brackets
+    word = re.sub(r"\[.*?\]", "", word)
+    # Remove punctuation and spaces
     word = re.sub(r"[^\w\s]", "", word)
-    return word.lower().strip()
+    return word.strip().lower()
 
 def close_excel_if_open():
     """Close Excel on Windows using taskkill (safe ignore errors)."""

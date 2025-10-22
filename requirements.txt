@@ -1,0 +1,7 @@
+pattern
+nltk
+openpyxl
+python-docx
+
+to run-
+pyinstaller --onefile --windowed --icon=icon.ico main.py
